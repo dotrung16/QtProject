@@ -1,5 +1,0 @@
-/home/do-trung/Qt_Project/build/CMakeFiles/MyApp.dir
-/home/do-trung/Qt_Project/build/CMakeFiles/edit_cache.dir
-/home/do-trung/Qt_Project/build/CMakeFiles/rebuild_cache.dir
-/home/do-trung/Qt_Project/build/CMakeFiles/MyApp_autogen_timestamp_deps.dir
-/home/do-trung/Qt_Project/build/CMakeFiles/MyApp_autogen.dir
