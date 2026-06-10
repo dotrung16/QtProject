@@ -1,27 +1,32 @@
-*.o
-*.a
-*.la
-*.so
-*.dll
-*.dylib
+[Bb]uild/
+[Bb]uild-*/
 
-*.pro.user
-*.pro.user.*
-*.qbs.user
-*.qbs.user.*
-CMakeLists.txt.user*
+.[Cc]ache/
+
+CMakeCache.txt
+CMakeFiles/
+CMakePresets.json
+Makefile
+cmake_install.cmake
+*.cmake
+
+.qtc_clangd/
+.qt/
+.qmake.stash
+
+*.user
+*.user.*
 
 moc_*.cpp
 ui_*.h
 qrc_*.cpp
-Makefile*
+*.qm
 
-build-*/
-build*/
-
-.cmake/
-.qtc_clangd/
-.qt/
+*.o
+*.a
+*.so
+*.out
+*.app
 
 *.sublime-workspace
 
