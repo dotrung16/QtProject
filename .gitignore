@@ -18,3 +18,14 @@ Makefile*
 
 build-*/
 build*/
+
+.cmake/
+.qtc_clangd/
+.qt/
+
+*.sublime-workspace
+
+.DS_Store
+.directory
+*~
+*.swp
