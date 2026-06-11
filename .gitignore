@@ -29,6 +29,7 @@ qrc_*.cpp
 *.app
 
 *.sublime-workspace
+compile_commands.json
 
 .DS_Store
 .directory
