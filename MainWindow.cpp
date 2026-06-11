@@ -31,3 +31,4 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 void MainWindow::onButtonClicked() {
 	m_label->setText("Button was clicked!");
 }
+

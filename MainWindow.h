@@ -20,3 +20,4 @@ private:
     QPushButton *m_button;
     QLabel *m_label;
 };
+

@@ -19,7 +19,5 @@ add_executable(MyApp
 )
 
 target_link_libraries(MyApp PRIVATE
-	Qt6::Core
 	Qt6::Widgets
 )
-
