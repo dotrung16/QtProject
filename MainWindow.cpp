@@ -24,7 +24,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 	mainLayout->setContentsMargins(0, 0, 0, 0);
 	mainLayout->setSpacing(0);
 
-	m_playlistWidget = new QListWidget();
+	m_playlistWidget = new QListWidget(central);
 	m_playlistWidget->setStyleSheet(
 		"QListWidget { border: none; padding: 10px; font-size: 14px; }"
 		"QListWidget::item { padding: 5px; border-radius: 5px; }"
@@ -32,10 +32,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 	);
 	mainLayout->addWidget(m_playlistWidget);
 
-	QWidget *controlDock = new QWidget();
+	QWidget *controlDock = new QWidget(central);
 	controlDock->setStyleSheet(
 		"QWidget { background-color: #dcdcdc; border-top: 1px solid #b3b3b3 }"
-		"QPushButton { background: transparent; border: none; padding 10px; border-radius: 15px }"
+		"QPushButton { background: transparent; border: none; padding: 10px; border-radius: 15px }"
 		"QPushButton::hover { background-color: #c8c8c8 }"
 		"QPushButton::pressed { background-color: #E95420 }"
 	);
@@ -47,20 +47,20 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 	QSize stdSize(32, 32);
 	QSize playSize(48, 48);
 
-	m_btnLoad = new QPushButton();
+	m_btnLoad = new QPushButton(controlDock);
 	m_btnLoad->setIcon(style()->standardIcon(QStyle::SP_DialogOpenButton));
 	m_btnLoad->setIconSize(stdSize);
 	m_btnLoad->setToolTip("Load Music");
 
-	m_btnPlay = new QPushButton();
+	m_btnPlay = new QPushButton(controlDock);
 	m_btnPlay->setIcon(style()->standardIcon(QStyle::SP_MediaPlay));
 	m_btnPlay->setIconSize(playSize);
 
-	m_btnPause = new QPushButton();
+	m_btnPause = new QPushButton(controlDock);
 	m_btnPause->setIcon(style()->standardIcon(QStyle::SP_MediaPause));
 	m_btnPause->setIconSize(stdSize);
 
-	m_btnStop = new QPushButton();
+	m_btnStop = new QPushButton(controlDock);
 	m_btnStop->setIcon(style()->standardIcon(QStyle::SP_MediaStop));
 	m_btnStop->setIconSize(stdSize);
 
@@ -84,7 +84,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 }
 
 void MainWindow::onLoadClicked() {
-	QStringList files = QFileDialog::getOpenFileNames(this, "Select Music Files", "", "Audio Files (*.mp3 *wav *.flac)");
+	QStringList files = QFileDialog::getOpenFileNames(this, "Select Music Files", "", "Audio Files (*.mp3 *.wav *.flac)");
 
 	for (const QString &file : files) {
 		m_playlistWidget->addItem(file);
@@ -93,8 +93,10 @@ void MainWindow::onLoadClicked() {
 
 void MainWindow::onPlayClicked() {
 	if (m_playlistWidget->currentItem()) {
-		QString filePath = m_playlistWidget->currentItem()->text();
-		m_player->setSource(QUrl::fromLocalFile(filePath));
+		QString fileUrl = m_playlistWidget->currentItem()->text();
+		if (m_player->source() != fileUrl) {
+			m_player->setSource(fileUrl);
+		}
 		m_player->play();
 	}
 }
